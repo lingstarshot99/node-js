@@ -14,6 +14,8 @@ var timer = setInterval(function() {
 }, 2000);
 */
 
-var count = require('./counter');
+var stuff = require('./stuff');
 
-console.log(count(['beyblade', 'kaiser', 'ninja storm']));
+console.log(stuff.count(['beyblade', 'kaiser', 'ninja storm']));
+console.log(stuff.adder(3,4));
+console.log(stuff.adder(stuff.pi,5));
