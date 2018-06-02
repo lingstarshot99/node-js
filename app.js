@@ -14,14 +14,17 @@ var timer = setInterval(function() {
 }, 2000);
 */
 
+/*
 var stuff = require('./stuff');
 
 console.log(stuff.count(['beyblade', 'kaiser', 'ninja storm']));
 console.log(stuff.adder(3,4));
 console.log(stuff.adder(stuff.pi,5));
+*/
 
 //<-------require lesson----->>
 
+/*
 var events = require('events');
 var util = require('util');
 
@@ -44,3 +47,24 @@ people.forEach(function(person){
 });
 
 fahmi.emit('speak', 'I did it guys!!');
+*/
+
+//<----------read and write files------------->
+
+//uses readFileSync and writeFileSync
+/*
+var fs = require('fs');
+
+var readMe = fs.readFileSync('readMe.txt','utf8');
+console.log(readMe);
+
+fs.writeFileSync('writeMe.txt','Testing for the writeFileSync method.');
+*/
+
+//async task
+var fs = require('fs');
+
+fs.readFile('readMe.txt', 'utf8', function(err, data){
+  console.log(data);
+  fs.writeFile('writeMeAsync.txt', data);
+});
