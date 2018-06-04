@@ -90,8 +90,9 @@ var http = require('http');
 var fs = require('fs');
 
 var readStream = fs.createReadStream(__dir + 'readMe.txt', 'utf8');
+var writeStream = fs.createWriteStream(__dir + '/writeMe.txt');
 
 readStream.on('data', function(chunk){
-  console.log('new chunk : ');
-  console.log(chunk);
+  console.log('new chunk');
+  writeStream.write(chunk);
 });
