@@ -50,16 +50,16 @@ fahmi.emit('speak', 'I did it guys!!');
 */
 
 //<----------read and write files------------->
-
-//uses readFileSync and writeFileSync
 /*
+//uses readFileSync and writeFileSync
+
 var fs = require('fs');
 
 var readMe = fs.readFileSync('readMe.txt','utf8');
 console.log(readMe);
 
 fs.writeFileSync('writeMe.txt','Testing for the writeFileSync method.');
-*/
+
 
 //async task
 var fs = require('fs');
@@ -68,3 +68,17 @@ fs.readFile('readMe.txt', 'utf8', function(err, data){
   console.log(data);
   fs.writeFile('writeMeAsync.txt', data);
 });
+*/
+
+//<---------creating server----------------->
+
+var http = require('http');
+
+var server = http.createServer(function(req, res){
+  console.log('listening port : ' + req.url)
+  res.writeHeader(200, {'Content-Type' : 'text/plain'});
+  res.end('Hey guys, server is working');
+});
+
+server.listen(9000, '127.0.0.1');
+console.log('hye giyi');
