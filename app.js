@@ -85,7 +85,7 @@ console.log('hye giyi');
 */
 
 // <------------readable stream---------->
-
+/*
 var http = require('http');
 var fs = require('fs');
 
@@ -96,3 +96,13 @@ readStream.on('data', function(chunk){
   console.log('new chunk');
   writeStream.write(chunk);
 });
+*/
+
+//<--------pipe------->
+
+var fs = require('fs');
+
+var myRead = fs.createReadStream(__dir + '/readMe.txt', 'utf8');
+var myWrite = fs.createWriteStream(__dir + '/writeMe.txt');
+
+myRead.pipe(myWrite);
