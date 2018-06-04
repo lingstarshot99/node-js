@@ -71,7 +71,7 @@ fs.readFile('readMe.txt', 'utf8', function(err, data){
 */
 
 //<---------creating server----------------->
-
+/*
 var http = require('http');
 
 var server = http.createServer(function(req, res){
@@ -82,3 +82,16 @@ var server = http.createServer(function(req, res){
 
 server.listen(9000, '127.0.0.1');
 console.log('hye giyi');
+*/
+
+// <------------readable stream---------->
+
+var http = require('http');
+var fs = require('fs');
+
+var readStream = fs.createReadStream(__dir + 'readMe.txt', 'utf8');
+
+readStream.on('data', function(chunk){
+  console.log('new chunk : ');
+  console.log(chunk);
+});
