@@ -89,8 +89,8 @@ console.log('hye giyi');
 var http = require('http');
 var fs = require('fs');
 
-var readStream = fs.createReadStream(__dir + 'readMe.txt', 'utf8');
-var writeStream = fs.createWriteStream(__dir + '/writeMe.txt');
+var readStream = fs.createReadStream(__dirname + 'readMe.txt', 'utf8');
+var writeStream = fs.createWriteStream(__dirname + '/writeMe.txt');
 
 readStream.on('data', function(chunk){
   console.log('new chunk');
@@ -99,10 +99,24 @@ readStream.on('data', function(chunk){
 */
 
 //<--------pipe------->
-
+/*
 var fs = require('fs');
 
-var myRead = fs.createReadStream(__dir + '/readMe.txt', 'utf8');
-var myWrite = fs.createWriteStream(__dir + '/writeMe.txt');
+var myRead = fs.createReadStream(__dirname + '/readMe.txt', 'utf8');
+var myWrite = fs.createWriteStream(__dirname + '/writeMe.txt');
 
 myRead.pipe(myWrite);
+*/
+
+//<----------stream content to port----------->
+
+var http = require('http');
+var fs = require('fs');
+
+var content = fs.createReadStream(__dirname + '/contentsample.txt', 'utf8');
+var server = http.createServer(function(req, res) {
+  res.writeHeader(200, {'Content-Type' : 'text/plain'});
+  content.pipe(res);
+});
+
+server.listen(3000, '127.0.0.1');
