@@ -109,13 +109,29 @@ myRead.pipe(myWrite);
 */
 
 //<----------stream content to port----------->
-
+/*
 var http = require('http');
 var fs = require('fs');
 
 var content = fs.createReadStream(__dirname + '/contentsample.txt', 'utf8');
 var server = http.createServer(function(req, res) {
   res.writeHeader(200, {'Content-Type' : 'text/plain'});
+  content.pipe(res);
+});
+
+server.listen(3000, '127.0.0.1');
+*/
+
+//<<-------------serve html----------->>
+
+var http = require('http');
+var fs = require('fs');
+
+
+
+var server = http.createServer(function(req, res){
+  res.writeHeader(200, {'Content-Type' : 'text/html'});
+  var content = fs.createReadStream(__dirname + '/index.html', 'utf8');
   content.pipe(res);
 });
 
