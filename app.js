@@ -138,7 +138,9 @@ var server = http.createServer(function(req, res){
 server.listen(3000, '127.0.0.1');
 */
 
+//<-------serve json------>
 var http = require('http');
+/*
 
 var server = http.createServer(function(req, res){
   res.writeHeader(200, {'Content-Type' : 'application/json'});
@@ -149,6 +151,33 @@ var server = http.createServer(function(req, res){
   }
   res.end(JSON.stringify(obj));
   console.log(req.url)
+});
+
+server.listen(3000, '127.0.0.1');
+*/
+
+//<---------basic routing------->
+
+var http = require('http');
+var fs = require('fs');
+
+
+var server = http.createServer(function(req, res) {
+  console.log('request for : ' + req.url);
+  if (req.url === '/' || req.url === '/home') {
+    res.writeHeader(200, {'Content-Type': 'text/html'});
+    fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(res);
+  } else if(req.url === '/contacts'){
+    res.writeHeader(200, {'Content-Type': 'text/html'});
+    fs.createReadStream(__dirname + '/contacts.html','utf8').pipe(res);
+  } else if(req.url === '/api/users') {
+    var users = [{name: 'fahmi', age: 19},{name: 'ryu', age:40}];
+    res.writeHeader(200, {'Content-Type':'application/json'});
+    res.end(JSON.stringify(users));
+  } else {
+    res.writeHeader(404, {'Content-Type': 'text/html'});
+    fs.createReadStream(__dirname + '/fail.html', 'utf8').pipe(res);
+  }
 });
 
 server.listen(3000, '127.0.0.1');
