@@ -123,7 +123,7 @@ server.listen(3000, '127.0.0.1');
 */
 
 //<<-------------serve html----------->>
-
+/*
 var http = require('http');
 var fs = require('fs');
 
@@ -133,6 +133,22 @@ var server = http.createServer(function(req, res){
   res.writeHeader(200, {'Content-Type' : 'text/html'});
   var content = fs.createReadStream(__dirname + '/index.html', 'utf8');
   content.pipe(res);
+});
+
+server.listen(3000, '127.0.0.1');
+*/
+
+var http = require('http');
+
+var server = http.createServer(function(req, res){
+  res.writeHeader(200, {'Content-Type' : 'application/json'});
+  var obj = {
+    name : 'fahmi',
+    age : 19,
+    job : 'ninja'
+  }
+  res.end(JSON.stringify(obj));
+  console.log(req.url)
 });
 
 server.listen(3000, '127.0.0.1');
