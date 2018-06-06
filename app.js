@@ -139,7 +139,7 @@ server.listen(3000, '127.0.0.1');
 */
 
 //<-------serve json------>
-var http = require('http');
+
 /*
 
 var server = http.createServer(function(req, res){
@@ -157,7 +157,7 @@ server.listen(3000, '127.0.0.1');
 */
 
 //<---------basic routing------->
-
+/*
 var http = require('http');
 var fs = require('fs');
 
@@ -167,7 +167,7 @@ var server = http.createServer(function(req, res) {
   if (req.url === '/' || req.url === '/home') {
     res.writeHeader(200, {'Content-Type': 'text/html'});
     fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(res);
-  } else if(req.url === '/contacts'){
+  } else if(req.url === '/contacts-us'){
     res.writeHeader(200, {'Content-Type': 'text/html'});
     fs.createReadStream(__dirname + '/contacts.html','utf8').pipe(res);
   } else if(req.url === '/api/users') {
@@ -181,3 +181,30 @@ var server = http.createServer(function(req, res) {
 });
 
 server.listen(3000, '127.0.0.1');
+*/
+
+//<-------express--------->
+
+var express = require('express');
+
+var app = express();
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/contact', function(req, res){
+  res.sendFile(__dirname + '/contacts.html');
+});
+
+app.get('/help', function(req, res){
+  res.sendFile(__dirname + '/contentsample.txt');
+});
+
+app.get('/profile/:name', function(req, res){
+  var info = {age : 19, job : 'student', hobbies: ['eating', 'fishing', 'gaming']};
+  res.render('profile', {name: req.params.name, data: info});
+});
+
+app.listen(3000);
