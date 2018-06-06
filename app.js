@@ -186,20 +186,22 @@ server.listen(3000, '127.0.0.1');
 //<-------express--------->
 
 var express = require('express');
+var fs = require('fs');
 
 var app = express();
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.render('index');
 });
 
 app.get('/contact', function(req, res){
-  res.sendFile(__dirname + '/contacts.html');
+  res.render('contact');
 });
 
 app.get('/help', function(req, res){
-  res.sendFile(__dirname + '/contentsample.txt');
+  var info = fs.readFileSync(__dirname + '/contentsample.txt', 'utf8');
+  res.render('help', {content: info});
 });
 
 app.get('/profile/:name', function(req, res){
