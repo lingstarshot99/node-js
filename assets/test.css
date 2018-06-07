@@ -1,0 +1,38 @@
+body {
+  width: 80%;
+  margin: auto;
+  background-color: skyblue;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+p {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+
+.profile-wrap {
+  background-color: green;
+}
+
+.contact-wrap {
+  background-color: orange;
+}
+
+#contact-form {
+  display: inline;
+  text-align: center;
+}
+
+label, input {
+  width: 100%;
+  height: 30px;
+  margin: 15px;
+  font-size: 22px;
+}

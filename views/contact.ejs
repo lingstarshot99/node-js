@@ -2,15 +2,22 @@
 <html>
   <head>
     <title>Contact Us!</title>
-    <style>
-      body {width: 80%; margin: auto; background-color:orange;}
-      h1 {text-align: center; color: white; font-size: 36px; text-transform: uppercase;}
-      p {text-align: center; color: white; font-size: 18px;}
-    </style>
+    <link rel="stylesheet" href="/assets/test.css" type="text/css">
   </head>
-  <body>
+  <body class="contact-wrap">
     <% include partials/nav.ejs %>
     <h1>Contact us</h1>
     <p>email or make a call to approach us</p>
+    <p><%= qs.dept %></p>
+
+    <form id="contact-form">
+      <label for="person">Contact person</label>
+      <input type="text" name="person" value="<%= qs.person %>">
+      <label for="dept">Department</label>
+      <input type="text" name="dept" value="<%= qs.dept %>">
+      <label for="email">Email</label>
+      <input type="email" name="email" value="<%= qs.email %>">
+      <input type="submit">
+    </form>
   </body>
 </html>

@@ -190,13 +190,14 @@ var fs = require('fs');
 
 var app = express();
 app.set('view engine', 'ejs');
+app.use('/assets', express.static('assets'));
 
 app.get('/', function(req, res){
   res.render('index');
 });
 
 app.get('/contact', function(req, res){
-  res.render('contact');
+  res.render('contact', {qs: req.query});
 });
 
 app.get('/help', function(req, res){
