@@ -10,13 +10,14 @@
     <p>email or make a call to approach us</p>
     <p><%= qs.dept %></p>
 
-    <form id="contact-form">
+    <form id="contact-form" method="POST" action="/contact">
       <label for="person">Contact person</label>
       <input type="text" name="person" value="<%= qs.person %>">
       <label for="dept">Department</label>
       <input type="text" name="dept" value="<%= qs.dept %>">
       <label for="email">Email</label>
       <input type="email" name="email" value="<%= qs.email %>">
+      <br>
       <input type="submit">
     </form>
   </body>

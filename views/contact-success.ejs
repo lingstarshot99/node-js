@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/test.css" type="text/css">
+    <title>Contact Us</title>
+  </head>
+  <body class="contact-wrap">
+    <% include partials/nav.ejs %>
+    <h1>Contact Us</h1>
+    <p>Thank You for contacting <%= data.person %> from <%= data.dept %> department.</p>
+    <p>We will contact you at <%= data.email %></p>
+  </body>
+</html>
